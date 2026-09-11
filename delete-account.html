@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suppression de Compte et des Données — Dār el-Jomla (دار الجملة)</title>
+    <style>
+        :root {
+            --primary: #00695C;
+            --primary-dark: #004D40;
+            --accent: #E65100;
+            --danger: #C62828;
+            --danger-bg: #FFEBEE;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --border: #E2E8F0;
+            --gold: #D97706;
+            --success: #2E7D32;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        header {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #E0F2F1;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+
+        .badge-google-play {
+            display: inline-block;
+            background: #FEF3C7;
+            color: #92400E;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+            margin-left: 8px;
+        }
+
+        h1 {
+            font-size: 1.85rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .alert-box {
+            background-color: #F0FDF4;
+            border-left: 4px solid var(--success);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+            font-size: 0.95rem;
+        }
+
+        .alert-box.danger {
+            background-color: var(--danger-bg);
+            border-left-color: var(--danger);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 32px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            color: var(--text);
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        p, ul, ol {
+            margin-bottom: 16px;
+            font-size: 0.98rem;
+        }
+
+        ul, ol {
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.92rem;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background-color: #F8FAFC;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .card {
+            background: #F8FAFC;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        /* Form styling */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: #FFFFFF;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 105, 92, 0.15);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .checkbox-group input {
+            margin-top: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--danger);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            background-color: #B71C1C;
+        }
+
+        .btn:active {
+            transform: scale(0.99);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: #E0F2F1;
+        }
+
+        .success-message {
+            display: none;
+            background-color: #E8F5E9;
+            border: 1px solid #A5D6A7;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .tag-delete {
+            background: #FEE2E2;
+            color: var(--danger);
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.82rem;
+        }
+
+        .tag-keep {
+            background: #FEF3C7;
+            color: #92400E;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.82rem;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .lang-switch {
+            text-align: right;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+        }
+
+        .lang-switch a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 8px;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="lang-switch">
+        <span>Français</span> | <a href="#english">English</a>
+    </div>
+
+    <header>
+        <span class="badge">Dār el-Jomla (دار الجملة)</span>
+        <span class="badge-google-play">Conforme Google Play Console</span>
+        <h1>Demande de Suppression de Compte et des Données</h1>
+        <p class="subtitle">Conformément aux exigences de transparence de Google Play et au RGPD / Privacy Policy</p>
+    </header>
+
+    <div class="alert-box">
+        <strong>Engagement de transparence :</strong> Vous avez le droit absolu de demander à tout moment la suppression définitive de votre compte, de vos identifiants de connexion et de l'ensemble de vos données d'apprentissage enregistrées sur l'application <strong>Dār el-Jomla</strong>.
+    </div>
+
+    <!-- 1. METHODES DE SUPPRESSION -->
+    <h2>1. Comment demander la suppression de votre compte ?</h2>
+
+    <div class="card">
+        <h3>Option A — Directement dans l'application mobile (Instantané)</h3>
+        <ol>
+            <li>Ouvrez l'application <strong>Dār el-Jomla</strong> sur votre appareil Android.</li>
+            <li>Appuyez sur l'icône <strong>Paramètres</strong> (roue crantée en haut à droite) ou sur votre avatar de profil.</li>
+            <li>Dans la section <strong>Compte Utilisateur</strong>, appuyez sur <strong>Gérer le compte</strong>.</li>
+            <li>Cliquez sur <strong>« Supprimer mon compte et mes données »</strong>.</li>
+            <li>Confirmez l'opération : toutes vos données locales et synchronisées sont effacées immédiatement.</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h3>Option B — Formulaire en ligne (Sans réinstaller l'application)</h3>
+        <p>Remplissez le formulaire ci-dessous pour transmettre automatiquement votre demande à notre équipe de support. La suppression sera effective sous <strong>48 heures ouvrées</strong> (et au maximum 30 jours conformément à la réglementation).</p>
+
+        <form id="deletionForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+                <label for="userEmail">Adresse e-mail associée à votre compte * :</label>
+                <input type="email" id="userEmail" required placeholder="ex: votre-adresse@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label for="authMethod">Méthode de connexion utilisée :</label>
+                <select id="authMethod">
+                    <option value="google">Compte Google (Google Sign-In)</option>
+                    <option value="email">Adresse E-mail & Mot de passe</option>
+                    <option value="guest">Utilisateur invité (Données locales)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="scope">Étendue de la suppression souhaitée :</label>
+                <select id="scope">
+                    <option value="full">Suppression intégrale (Compte + Progression + Messages + Données)</option>
+                    <option value="chat_only">Suppression partielle (Historique Ostādh IA et audios uniquement)</option>
+                    <option value="progress_only">Réinitialisation complète des scores et progression XP</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="reason">Motif (Facultatif) :</label>
+                <textarea id="reason" rows="2" placeholder="Dites-nous brièvement la raison de votre départ si vous le souhaitez..."></textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="confirmCheck" required>
+                <label for="confirmCheck">Je confirme vouloir supprimer définitivement mon compte et je comprends que cette action est irréversible.</label>
+            </div>
+
+            <button type="submit" class="btn">Envoyer ma demande de suppression</button>
+            <a href="mailto:support@darel-jomla.com?subject=Demande%20de%20suppression%20de%20compte%20D%C4%81r%20el-Jomla" class="btn btn-outline">Contacter par e-mail direct</a>
+        </form>
+
+        <div id="successBox" class="success-message">
+            <h3 style="color: var(--success); margin-bottom: 8px;">✅ Demande enregistrée avec succès !</h3>
+            <p>Votre demande de suppression de compte pour l'adresse <strong id="confirmedEmail"></strong> a bien été prise en compte.</p>
+            <p>Un e-mail de confirmation a été généré. Vous recevrez une notification une fois l'effacement effectif sous 48 heures maximum.</p>
+        </div>
+    </div>
+
+    <!-- 2. DETAIL DES DONNEES SUPPRIMEES ET CONSERVEES -->
+    <h2>2. Quelles données sont supprimées ou conservées ?</h2>
+
+    <p>Conformément aux directives de la <strong>Google Play Console</strong>, voici le détail exact du sort réservé à vos données :</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Type de donnée</th>
+                <th>Catégorie</th>
+                <th>Statut lors de la demande</th>
+                <th>Délai de traitement</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Identifiants de compte</strong> (E-mail, nom, jetons d'authentification Google/Firebase)</td>
+                <td>Données personnelles</td>
+                <td><span class="tag-delete">Supprimé définitivement</span></td>
+                <td>Immédiat (max 48h)</td>
+            </tr>
+            <tr>
+                <td><strong>Progression pédagogique</strong> (Points XP, niveau atteint, badges débloqués, fiches maîtrisées)</td>
+                <td>Activité dans l'app</td>
+                <td><span class="tag-delete">Supprimé définitivement</span></td>
+                <td>Immédiat</td>
+            </tr>
+            <tr>
+                <td><strong>Historique de conversation Ostādh IA</strong> (Messages textuels en Derja et traductions)</td>
+                <td>Contenu utilisateur</td>
+                <td><span class="tag-delete">Supprimé définitivement</span></td>
+                <td>Immédiat</td>
+            </tr>
+            <tr>
+                <td><strong>Données vocales locales</strong> (Dictée vocale et écoute audio)</td>
+                <td>Audio</td>
+                <td><span class="tag-delete">Supprimé définitivement</span> (Aucun enregistrement conservé)</td>
+                <td>Immédiat</td>
+            </tr>
+            <tr>
+                <td><strong>Historique de transactions Google Play</strong> (Numéro de commande GPA, dates d'abonnement)</td>
+                <td>Financier & Fiscal</td>
+                <td><span class="tag-keep">Conservé temporairement</span> (Obligations légales comptables et lutte contre la fraude)</td>
+                <td>Durée légale réglementaire</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 3. ABONNEMENTS ET PAIEMENTS GOOGLE PLAY -->
+    <h2>3. Important : Gestion de votre abonnement Google Play</h2>
+    <div class="alert-box danger">
+        <strong>⚠️ Attention concernant votre abonnement Premium :</strong><br>
+        La suppression de votre compte Dār el-Jomla n'annule pas automatiquement votre abonnement payant auprès de Google Play. 
+        Pour éviter tout renouvellement automatique, vous devez également résilier votre abonnement dans l'application <strong>Google Play Store</strong> :
+        <ol style="margin-top: 8px; margin-bottom: 0;">
+            <li>Ouvrez l'application <strong>Google Play Store</strong>.</li>
+            <li>Appuyez sur votre profil en haut à droite > <strong>Paiements et abonnements</strong> > <strong>Abonnements</strong>.</li>
+            <li>Sélectionnez <strong>Dār el-Jomla</strong> et appuyez sur <strong>Annuler l'abonnement</strong>.</li>
+        </ol>
+    </div>
+
+    <!-- 4. CONTACT SUPPORT -->
+    <h2>4. Contact & Délégué à la Protection des Données</h2>
+    <p>Pour toute question concernant vos données personnelles ou pour un suivi de votre demande, contactez notre équipe :</p>
+    <ul>
+        <li><strong>E-mail dédié :</strong> <a href="mailto:privacy@darel-jomla.com">privacy@darel-jomla.com</a> ou <a href="mailto:support@darel-jomla.com">support@darel-jomla.com</a></li>
+        <li><strong>Développeur :</strong> Dār el-Jomla Learning Team</li>
+        <li><strong>Application Android :</strong> Dār el-Jomla (<code>com.aistudio.derjalearn.ktvq</code>)</li>
+    </ul>
+
+    <hr style="margin: 40px 0; border: none; border-top: 1px solid var(--border);">
+
+    <!-- ENGLISH VERSION FOR GOOGLE PLAY REVIEWERS -->
+    <div id="english">
+        <header>
+            <span class="badge">English Version</span>
+            <h1>Account and Data Deletion Request</h1>
+            <p class="subtitle">Google Play User Data Policy Compliance</p>
+        </header>
+
+        <p>In compliance with the <strong>Google Play Developer Policy on Account Deletion</strong>, users of <strong>Dār el-Jomla</strong> can request deletion of their account and all associated personal data.</p>
+
+        <h3>How to delete your account:</h3>
+        <p><strong>Method 1 (In-App):</strong> Open the app &gt; Settings &gt; User Account &gt; Click <em>"Delete Account and Data"</em>.</p>
+        <p><strong>Method 2 (Web Request):</strong> Use the form above or email us at <a href="mailto:privacy@darel-jomla.com?subject=Account%20Deletion%20Request%20Dar%20el-Jomla">privacy@darel-jomla.com</a> with your registered email.</p>
+
+        <h3>Data Retention Policy:</h3>
+        <ul>
+            <li><strong>Deleted immediately:</strong> Account credentials, email, profile name, learning progress (XP, level, unlocked badges), chat messages with Ostādh AI, and favorite words.</li>
+            <li><strong>Retained:</strong> Google Play transaction logs (GPA order ID) retained strictly for tax, legal, and financial compliance required by applicable law.</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Dār el-Jomla (دار الجملة). Tous droits réservés.</p>
+        <p><a href="privacy-policy.html" style="color: var(--primary);">Politique de Confidentialité</a> • <a href="terms-of-service.html" style="color: var(--primary);">Conditions Générales</a></p>
+    </footer>
+</div>
+
+<script>
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        var email = document.getElementById('userEmail').value;
+        var authMethod = document.getElementById('authMethod').value;
+        var scope = document.getElementById('scope').value;
+        var reason = document.getElementById('reason').value;
+
+        // Display success confirmation
+        document.getElementById('confirmedEmail').textContent = email;
+        document.getElementById('successBox').style.display = 'block';
+
+        // Prepare mailto fallback to notify team directly
+        var subject = encodeURIComponent("Demande de suppression de compte Dār el-Jomla : " + email);
+        var body = encodeURIComponent(
+            "Bonjour,\n\n" +
+            "Je demande par la présente la suppression définitive de mon compte et des données associées.\n\n" +
+            "- Email : " + email + "\n" +
+            "- Méthode d'authentification : " + authMethod + "\n" +
+            "- Étendue souhaitée : " + scope + "\n" +
+            "- Raison : " + (reason || "Non spécifiée") + "\n\n" +
+            "Merci de procéder à l'effacement dans les meilleurs délais conformément aux règles de Google Play."
+        );
+
+        window.location.href = "mailto:privacy@darel-jomla.com?subject=" + subject + "&body=" + body;
+    }
+</script>
+
+</body>
+</html>
