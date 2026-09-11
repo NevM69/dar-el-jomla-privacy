@@ -10,6 +10,8 @@ Ce dossier regroupe tous les documents légaux, techniques et textuels obligatoi
 | :--- | :--- | :--- |
 | **`privacy-policy.html`** | Web (HTML) | **Règles de confidentialité prêtes à être hébergées**. Contient la mise en page responsive et tous les paragraphes exigés par Google Play. |
 | **`privacy-policy.md`** | Markdown | Version texte des règles de confidentialité pour lecture et archivage. |
+| **`delete-account.html`** | Web (HTML) | **Page obligatoire de demande de suppression de compte et des données**. Contient le formulaire interactif requis par la politique Play Console. |
+| **`delete-account.md`** | Markdown | Documentation et guide pour la suppression de compte utilisateur. |
 | **`terms-of-service.html`** | Web (HTML) | Conditions Générales d'Utilisation (CGU) pour le site web ou la consultation publique. |
 | **`terms-of-service.md`** | Markdown | Version Markdown des Conditions Générales d'Utilisation. |
 | **`data-safety-guide.md`** | Guide | **Guide pas-à-pas pour remplir le formulaire « Sécurité des données »** de la Play Console sans risque de rejet. |
@@ -41,7 +43,8 @@ Google Play exige que l'URL de votre politique de confidentialité soit publique
 - [x] **Version Code / Version Name :** `versionCode = 7`, `versionName = "7.0"`
 - [x] **Icône adaptative personnalisée :** Déjà intégrée (`res/mipmap-anydpi-v26/ic_launcher.xml`)
 - [x] **Règles de confidentialité en ligne :** URL renseignée dans la Play Console
-- [x] **Accès dans l'application :** Dialogue de confidentialité accessible dans les Paramètres de l'application
+- [x] **URL de suppression de compte & données :** Fichier `delete-account.html` prêt pour la section Sécurité des données
+- [x] **Accès dans l'application :** Dialogues de confidentialité et suppression de données accessibles dans l'application
 - [x] **Formulaire Sécurité des données :** Complété en suivant `data-safety-guide.md`
 - [x] **Déclaration des autorisations :** `RECORD_AUDIO` et `POST_NOTIFICATIONS` justifiées pour les fonctionnalités pédagogiques
 - [x] **Accès à l'application pour les examinateurs :** Accès libre sans identifiant requis
